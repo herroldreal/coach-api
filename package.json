@@ -1,0 +1,12 @@
+{
+  "name": "coach-gpt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["GPT-3 Model", "API IA", "IA", "Coach"],
+  "author": "Herrold Real <realherrold@gmail.com>",
+  "license": "ISC"
+}
