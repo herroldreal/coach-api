@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.ts", "src/**/*.json",
+    ".env.development"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tests",
+    "tests",
+    "**/*spec.ts",
+    ".serverless/**/*",
+    ".webpack/**/*",
+    "_warmup/**/*",
+    ".vscode/**/*",
+    "*.config.js",
+    "**/*.js"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": [
+		"@typescript-eslint/eslint-plugin",
+		"@typescript-eslint",
+		"prettier"
+	],
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaVersion": 2021,
+		"ecmaFeatures": {
+			"jsx": true,
+			"destructuring": true,
+			"arrowFunctions": true,
+			"modules": true,
+			"classes": true,
+			"forOf": true,
+			"defaultParams": true
+		},
+		"tsconfigRootDir": "."
+	},
+	"extends": [
+		"airbnb-base",
+		"eslint:recommended",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended",
+		"prettier"
+	],
+	"env": {
+		"es6": true,
+		"browser": true,
+		"jquery": false,
+		"node": true,
+		"jest": true
+	},
+	"ignorePatterns": [
+		"package.json",
+		"package-lock.json",
+		".prettierrc.json",
+		".eslintrc",
+		"jest.config.js",
+		"jest.setup.js",
+		"dist/",
+		"tsconfig-paths-bootstrap.js",
+		".gitlab-ci.yml",
+		"migrations/",
+		"seeders/",
+		"webpack.config.js"
+	],
+	"rules": {
+		"max-lines-per-function": ["error", { "max": 20 ,"skipBlankLines": true, "skipComments": true }],
+		"max-params": [
+			"error",
+			3
+		],
+		"class-methods-use-this": "off",
+		"no-useless-constructor": 0,
+		"import/prefer-default-export": "off",
+		"no-underscore-dangle": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"no-console": "error",
+		"prettier/prettier": "error",
+		"import/no-unresolved": "off",
+		"import/order": "error",
+		"import/no-extraneous-dependencies": [
+			"error",
+			{
+				"devDependencies": true,
+				"optionalDependencies": false,
+				"peerDependencies": false
+			}
+		],
+		"no-shadow": "off",
+		"@typescript-eslint/no-shadow": [
+			"error"
+		],
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [
+					".js",
+					".jsx",
+					".ts",
+					".tsx",
+					".json"
+				]
+			}
+		}
+	},
+	"globals": {
+		"Atomics": false,
+		"SharedArrayBuffer": false
+	},
+	"overrides": [
+		{
+			"files": [
+				"**/*.test.ts",
+				"src/**/*.test.ts",
+				"tests/generators/*.ts"
+			],
+			"rules": {
+				"max-lines-per-function": [
+					"error",
+					{
+						"max": 500
+					}
+				]
+			}
+		}
+	]
+}

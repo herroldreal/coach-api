@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "lib": [
+      "es2021", "esnext.asynciterable"
+    ],
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": "src/",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@App/*": ["*"],
+      "@Utils/*": ["src/utils"],
+      "@Test/*": ["tests/*"]
+    },
+    "allowJs": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "noUnusedLocals": false,
+    "watch": true,
+    "noUnusedParameters": false
+  }
+}
