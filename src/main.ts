@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '@App/app.module';
 import helmet from 'helmet';
+import Logger from '@App/utils/logger/log';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -8,4 +9,6 @@ async function bootstrap() {
 
   await app.listen(3000);
 }
-bootstrap();
+bootstrap()
+  .then(() => Logger.log('Server started'))
+  .catch(Logger.error);

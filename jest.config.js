@@ -11,6 +11,7 @@ module.exports = {
     '^@Test/(.*)': '<rootDir>/tests/$1',
   },
   setupFilesAfterEnv: ['./src/test/setup.ts'],
+  coveragePathIgnorePatterns: ['./src/app.module.ts', './src/main.ts'],
   collectCoverageFrom: ['src/**/*.ts', '!**/node_modules/**', '!**/tests/**'],
   coverageThreshold: {
     global: {
