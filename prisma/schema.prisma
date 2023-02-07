@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  firstName  String
+  lastName   String
+  facebook   Facebook @relation(fields: [facebookId], references: [id])
+  email      String
+  face       Face     @relation(fields: [faceId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  faceId     String   @db.ObjectId
+  facebookId String
+}
+
+model Facebook {
+  id        String   @id @map("_id")
+  avatar    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User[]
+}
+
+model Face {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  embedding Float[]
+  active    Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User[]
+}

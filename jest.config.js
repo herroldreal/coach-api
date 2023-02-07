@@ -9,6 +9,10 @@ module.exports = {
   moduleNameMapper: {
     '^@App/(.*)': '<rootDir>/src/$1',
     '^@Test/(.*)': '<rootDir>/tests/$1',
+    '^@Services/(.*)': '<rootDir>/src/services/$1',
+    '^@Logger/(.*)': '<rootDir>/src/utils/logger/$1',
+    '^@Db/(.*)': '<rootDir>/src/db/$1',
+    '^@Utils/(.*)': '<rootDir>/src/utils/$1',
   },
   setupFilesAfterEnv: ['./src/test/setup.ts'],
   coveragePathIgnorePatterns: ['./src/app.module.ts', './src/main.ts'],

@@ -51,7 +51,7 @@
 		"webpack.config.js"
 	],
 	"rules": {
-		"max-lines-per-function": ["error", { "max": 20 ,"skipBlankLines": true, "skipComments": true }],
+		"max-lines-per-function": ["error", { "max": 25 ,"skipBlankLines": true, "skipComments": true }],
 		"max-params": [
 			"error",
 			3
