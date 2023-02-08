@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import Logger from '@App/utils/logger/log';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as dotenv from 'dotenv';
+import { VersioningType } from '@nestjs/common';
 import { version } from '../package.json';
 
 dotenv.config();
@@ -11,6 +12,9 @@ dotenv.config();
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(helmet());
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Coach API')

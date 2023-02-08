@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["tracing"]
 }
 
 datasource db {
@@ -8,16 +9,16 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
   firstName  String
   lastName   String
-  facebook   Facebook @relation(fields: [facebookId], references: [id])
+  facebook   Facebook? @relation(fields: [facebookId], references: [id])
   email      String
-  face       Face     @relation(fields: [faceId], references: [id])
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  faceId     String   @db.ObjectId
-  facebookId String
+  face       Face?     @relation(fields: [faceId], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  faceId     String?   @db.ObjectId
+  facebookId String?
 }
 
 model Facebook {
