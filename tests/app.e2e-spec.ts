@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from '@App/app.module';
+import { AuthModule } from '@App/modules/auth.module';
 
-describe('AppController (e2e)', () => {
+describe('AuthController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [AuthModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();
@@ -19,5 +19,9 @@ describe('AppController (e2e)', () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return request(app.getHttpServer()).get('/').expect(200).expect('Hello World!');
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 });

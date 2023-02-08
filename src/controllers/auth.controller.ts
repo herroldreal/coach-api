@@ -6,7 +6,8 @@ import Logger from '@Logger/log';
 export class AuthController {
   @UseGuards(AuthGuard('facebook-token'))
   @Get('facebook')
-  async getTokenAfterFacebookSignIn(@Req() req) {
+  async getTokenAfterFacebookSignIn(@Req() req): Promise<string> {
     Logger.log(`Facebook SignIn -> ${req}`);
+    return 'Facebook';
   }
 }

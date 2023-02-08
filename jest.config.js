@@ -10,12 +10,13 @@ module.exports = {
     '^@App/(.*)': '<rootDir>/src/$1',
     '^@Test/(.*)': '<rootDir>/tests/$1',
     '^@Services/(.*)': '<rootDir>/src/services/$1',
+    '^@Controllers/(.*)': '<rootDir>/src/controllers/$1',
     '^@Logger/(.*)': '<rootDir>/src/utils/logger/$1',
     '^@Db/(.*)': '<rootDir>/src/db/$1',
     '^@Utils/(.*)': '<rootDir>/src/utils/$1',
   },
   setupFilesAfterEnv: ['./src/test/setup.ts'],
-  coveragePathIgnorePatterns: ['./src/app.module.ts', './src/main.ts'],
+  coveragePathIgnorePatterns: ['./src/app.module.ts', './src/main.ts', './src/db/client.ts'],
   collectCoverageFrom: ['src/**/*.ts', '!**/node_modules/**', '!**/tests/**'],
   coverageThreshold: {
     global: {

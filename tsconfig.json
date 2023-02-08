@@ -26,6 +26,7 @@
       "@App/*": ["./src/*"],
       "@Utils/*": ["./src/utils/*"],
       "@Services/*": ["./src/services/*"],
+      "@Controllers/*": ["./src/controllers/*"],
       "@Db/*": ["./src/db/*"],
       "@Logger/*": ["./src/utils/logger/*"],
       "@Test/*": ["tests/*"]
