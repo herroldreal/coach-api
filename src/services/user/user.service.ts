@@ -27,7 +27,7 @@ export class UserService {
           face: undefined,
           facebook: {
             create: {
-              facebookId: profile.id,
+              id: profile.id,
               avatar: profile.photos[0].value,
             },
           },
