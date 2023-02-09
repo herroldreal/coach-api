@@ -1,25 +1,20 @@
 import { FaceDto } from '@Db/dto/face.dto';
-import { AutoMap } from '@automapper/classes';
+import { Expose, Type } from 'class-transformer';
 
 export class UserDto {
-  @AutoMap()
+  @Expose()
   email: string;
 
-  @AutoMap()
-  firstName: string;
-
-  @AutoMap()
-  lastName: string;
-
-  @AutoMap()
+  @Expose()
   fullName: string;
 
-  @AutoMap()
+  @Expose()
   facebookId: string;
 
-  @AutoMap()
+  @Expose()
+  @Type(() => FaceDto)
   facePattern?: FaceDto;
 
-  @AutoMap()
+  @Expose()
   picture: string;
 }

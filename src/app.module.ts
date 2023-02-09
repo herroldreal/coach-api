@@ -1,22 +1,33 @@
 import { Module } from '@nestjs/common';
 import { AuthModule } from '@App/modules/auth.module';
 import { UserModule } from '@App/modules/user.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from '@App/config/configuration';
-import { AutomapperModule } from '@automapper/nestjs';
-import { classes } from '@automapper/classes';
+import { SentryModule } from '@ntegral/nestjs-sentry';
+import * as Sentry from '@sentry/node';
+import * as Tracing from '@sentry/tracing';
 
 @Module({
   imports: [
-    AuthModule,
-    UserModule,
     ConfigModule.forRoot({
       load: [configuration],
       isGlobal: true,
     }),
-    AutomapperModule.forRoot({
-      strategyInitializer: classes(),
+    SentryModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (cfg: ConfigService) => ({
+        dsn: cfg.get('sentry.dsn'),
+        debug: cfg.get('env') === 'development',
+        environment: cfg.get('env'),
+        release: cfg.get('version'),
+        logLevels: ['debug', 'error', 'log', 'verbose', 'warn'],
+        integrations: [new Sentry.Integrations.Http({ tracing: true }), new Tracing.Integrations.Express()],
+        tracesSampleRate: 1.0,
+      }),
+      inject: [ConfigService],
     }),
+    AuthModule,
+    UserModule,
   ],
 })
 export class AppModule {}

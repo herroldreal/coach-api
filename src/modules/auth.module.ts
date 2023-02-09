@@ -5,6 +5,7 @@ import { UserModule } from '@App/modules/user.module';
 import { UserService } from '@Services/user/user.service';
 import { ConfigModule } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
+import { Mapper } from '@Utils/mapper';
 
 @Module({
   imports: [ConfigModule, PassportModule, UserModule],

@@ -1,11 +1,10 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Req, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import Logger from '@Logger/log';
+import { SentryInterceptor } from '@Utils/interceptor/sentry.interceptor';
 
-@Controller({
-  version: '1',
-  path: 'auth',
-})
+@UseInterceptors(SentryInterceptor)
+@Controller({ version: '1', path: 'auth' })
 export class AuthController {
   @UseGuards(AuthGuard('facebook-token'))
   @Get('facebook')
